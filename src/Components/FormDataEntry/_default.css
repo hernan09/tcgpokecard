@@ -1,0 +1,12 @@
+.form_container {
+  width: 300px;
+  margin: auto;
+  position: relative;
+  top: 10%;
+}
+
+.form_container > .row > .btn {
+  max-width: 250px;
+  margin: auto;
+  margin-top: 10px;
+}

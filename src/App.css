@@ -1,0 +1,8 @@
+.body_app {
+  width: 100vw;
+  height: 100vh;
+  background: url('./images/city-nawpic.jpg'),
+    linear-gradient(to right, #000046, #1cb5e0);
+  background-size: cover;
+  background-blend-mode: overlay;
+}
