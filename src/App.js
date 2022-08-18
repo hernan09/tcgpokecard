@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Driven from './components/datadriven/driven';
 import './App.css';
 
 function App() {
@@ -13,13 +14,11 @@ function App() {
 
   const getCards = () => {
     setLoader(false);
-    console.log('loader', loader);
     axios(
-      `https://api.pokemontcg.io/v2/cards/?page=${page || 1}&pageSize=30`
+      `https://api.pokemontcg.io/v2/cards/?page=${page || 1}&pageSize=20`
     ).then((resp) => {
       setData(resp.data);
       setLoader(true);
-      console.log('loader', loader);
       console.log(resp.data);
     });
   };
@@ -38,7 +37,6 @@ function App() {
     if (page <= 1) {
       setPage(1);
     }
-    console.log('la page', page);
     getCards();
   };
 
@@ -58,14 +56,9 @@ function App() {
           NEXT
         </button>
       </div>
-      {!loader && (
-        <img
-          src={`https://www.miraflores.gob.pe/modulos/consultatramite_/img/loading.gif`}
-          className="loader"
-        ></img>
-      )}
       <div className="content_box">
-        {loader &&
+        {<Driven loader={loader} data={data}></Driven>}
+        {/* {loader &&
           data?.data?.map((item, index) => {
             return (
               <div className="cards" key={index}>
@@ -75,7 +68,18 @@ function App() {
                 ></img>
               </div>
             );
-          })}
+          })} */}
+      </div>
+      <div className="footer">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">Library</a>
+          </li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
       </div>
     </div>
   );
