@@ -1,6 +1,3 @@
-body {
-  background-color: white !important;
-}
 .body_app {
   width: 100%;
   height: 100%;
@@ -47,11 +44,10 @@ body {
   /* margin-top: 20px; */
   /* margin-bottom: 20px; */
   position: fixed;
-  z-index: 10;
   top: 0;
-  background-color: whitesmoke;
+  background-color: black;
   padding: 10px;
-  opacity: 0.8;
+  z-index: 7;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .imagecard {
@@ -63,10 +59,37 @@ body {
 .footer {
   width: 100%;
   height: 150px;
-  background-color: whitesmoke;
+  background-color: black;
   position: relative;
-  bottom: 0;
+  bottom: -50px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.breadcrumb-item a {
+  color: white;
+  text-decoration: none;
+}
+@media (max-width: 450px) {
+  .content_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 75px;
+  }
+  .cards {
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    height: 140px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+  .imagecard {
+    width: 100px;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Driven from './components/datadriven/driven';
+import image from '../src/assets/Images/paisaje.gif';
 import './App.css';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   const getCards = () => {
     setLoader(false);
     axios(
-      `https://api.pokemontcg.io/v2/cards/?page=${page || 1}&pageSize=20`
+      `https://api.pokemontcg.io/v2/cards/?page=${page || 1}&pageSize=10`
     ).then((resp) => {
       setData(resp.data);
       setLoader(true);
@@ -41,19 +42,27 @@ function App() {
   };
 
   return (
-    <div className="body_app">
+    <div
+      className="body_app"
+      style={{
+        backgroundImage: `url(${image})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <div className="content-buttons">
         <button
           className="btn btn-dark btn-sm buttonpage"
           onClick={ChangeBackPage}
         >
-          BACK
+          Back
         </button>
         <button
           className="btn btn-dark btn-sm buttonpage"
           onClick={ChangeNextPage}
         >
-          NEXT
+          Next
         </button>
       </div>
       <div className="content_box">
@@ -73,12 +82,12 @@ function App() {
       <div className="footer">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="#">Home</a>
+            <a href="#">PokeApp made</a>
           </li>
           <li className="breadcrumb-item">
-            <a href="#">Library</a>
+            <a href="#">be</a>
           </li>
-          <li className="breadcrumb-item active">Data</li>
+          <li className="breadcrumb-item active">Hernan</li>
         </ol>
       </div>
     </div>
