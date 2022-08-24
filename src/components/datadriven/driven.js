@@ -76,13 +76,12 @@ function Driven({ data, loader }) {
     console.log('loader', loader);
   }, []);
 
-  const cancelFlag = () => {
+  const cancelFlag = (poketype) => {
+    console.log('la flag', poketype);
     setFlag(false);
-    console.log('la flag', flag);
   };
   const changeFlag = (e) => {
     console.log('value', e.target.value);
-    console.log('aca filtro por tipo', data);
     setFlag(!flag);
     console.log('la flag', flag);
   };
@@ -108,11 +107,12 @@ function Driven({ data, loader }) {
           <div className="list-group custom-list">
             {classPokemon.map((item, index) => {
               return (
-                <div key={index} className="content-icon" onClick={cancelFlag}>
+                <div key={index} className="content-icon">
                   <a
                     href="#"
                     key={index}
                     className="list-group-item list-group-item-action hvr-curl-bottom-right"
+                    onClick={cancelFlag}
                   >
                     <img src={item.icon} className="span-icon" />
                     {item.pokename}

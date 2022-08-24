@@ -48,7 +48,6 @@ function App() {
         backgroundImage: `url(${image})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
       }}
     >
       <div className="content-buttons">
