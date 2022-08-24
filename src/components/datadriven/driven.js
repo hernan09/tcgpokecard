@@ -4,86 +4,93 @@ import './driven.css';
 function Driven({ data, loader }) {
   const myref = useRef();
   const [flag, setFlag] = useState(false);
+  const [filterEnd, setFilterEnd] = useState(false);
+  const [filterData, setFilterData] = useState([]);
 
   const classPokemon = [
     {
-      pokename: 'Grass',
+      pokeType: 'Grass',
       icon: 'https://www.kindpng.com/picc/m/316-3164678_pokemon-symbol-png-transparent-png.png',
     },
     {
-      pokename: 'Bug',
+      pokeType: 'Bug',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Pok%C3%A9mon_Bug_Type_Icon.svg/240px-Pok%C3%A9mon_Bug_Type_Icon.svg.png',
     },
     {
-      pokename: 'Lightning',
+      pokeType: 'Lightning',
       icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH1elmnoXfefk-78O12__EuJri5RY4G8zh5A&usqp=CAU',
     },
     {
-      pokename: 'Dragon',
+      pokeType: 'Dragon',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Pok%C3%A9mon_Dragon_Type_Icon.svg/1200px-Pok%C3%A9mon_Dragon_Type_Icon.svg.png',
     },
     {
-      pokename: 'Water',
+      pokeType: 'Water',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Pok%C3%A9mon_Water_Type_Icon.svg/2048px-Pok%C3%A9mon_Water_Type_Icon.svg.png',
     },
     {
-      pokename: 'Darkness',
+      pokeType: 'Darkness',
       icon: 'https://pngset.com/images/the-strongest-attacks-for-each-type-in-pokmon-go-dark-type-pokemon-logo-symbol-trademark-moon-outer-space-transparent-png-2603328.png',
     },
     {
-      pokename: 'Metal',
+      pokeType: 'Metal',
       icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjSGUJSwGW0wDJHT-SLoLqKF-Q8_7gziDt6hxQwpBprMJnTajKknx-78p2SoIkLG8FkZ4&usqp=CAU',
     },
     {
-      pokename: 'Colorless',
+      pokeType: 'Colorless',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Pok%C3%A9mon_Normal_Type_Icon.svg/1200px-Pok%C3%A9mon_Normal_Type_Icon.svg.png',
     },
     {
-      pokename: 'Psychic',
+      pokeType: 'Psychic',
       icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnZY_wptqdjEv7LsgH73FeKqhJzr4oT5ultA&usqp=CAU',
     },
     {
-      pokename: 'Fire',
+      pokeType: 'Fire',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Pok%C3%A9mon_Fire_Type_Icon.svg/1200px-Pok%C3%A9mon_Fire_Type_Icon.svg.png',
     },
     {
-      pokename: 'Fighting',
+      pokeType: 'Fighting',
       icon: 'https://e7.pngegg.com/pngimages/374/734/png-clipart-pokemon-types-pokemon-trading-card-game-video-symbol-blue-fire-dragon-orange-logo.png',
     },
     {
-      pokename: 'Ice',
+      pokeType: 'Ice',
       icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvBN1h83YXcTGPoSzRhE_SnFly5n-OX5dKg&usqp=CAU',
     },
     {
-      pokename: 'Ghost',
+      pokeType: 'Ghost',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pok%C3%A9mon_Ghost_Type_Icon.svg/800px-Pok%C3%A9mon_Ghost_Type_Icon.svg.png',
     },
     {
-      pokename: 'Fairy',
+      pokeType: 'Fairy',
       icon: 'https://logodix.com/logo/565521.jpg',
     },
     {
-      pokename: 'Ground',
+      pokeType: 'Ground',
       icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS39NTuVG7XbrLOrXa05UKyNCk_PljW_Dra7w&usqp=CAU',
     },
     {
-      pokename: 'Poison',
+      pokeType: 'Poison',
       icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Pok%C3%A9mon_Poison_Type_Icon.svg/800px-Pok%C3%A9mon_Poison_Type_Icon.svg.png',
     },
   ];
+  let filterDataa = [];
 
   useEffect(() => {
     console.log('loader', loader);
   }, []);
 
-  const cancelFlag = (poketype) => {
-    console.log('la flag', poketype);
+  const handleClick = (e, poketype) => {
+    data.data.filter((item) => {
+      if (item.types[0] === poketype) {
+        filterDataa.push(item);
+      }
+    });
+    console.log(filterDataa);
     setFlag(false);
   };
   const changeFlag = (e) => {
     console.log('value', e.target.value);
     setFlag(!flag);
-    console.log('la flag', flag);
   };
   return (
     <div className="content_driven">
@@ -112,10 +119,10 @@ function Driven({ data, loader }) {
                     href="#"
                     key={index}
                     className="list-group-item list-group-item-action hvr-curl-bottom-right"
-                    onClick={cancelFlag}
+                    onClick={(event) => handleClick(event, item.pokeType)}
                   >
                     <img src={item.icon} className="span-icon" />
-                    {item.pokename}
+                    {item.pokeType}
                   </a>
                 </div>
               );
@@ -124,23 +131,42 @@ function Driven({ data, loader }) {
         )}
       </div>
       <div className="main">
-        {data?.data?.map((item, index) => {
-          return (
-            <div ref={myref} className="cards" key={index}>
-              {loader && (
-                <img
-                  className="imagecard hvr-grow"
-                  src={item.images.small}
-                ></img>
-              )}
-              {!loader && (
-                <div className="spinner-border text-primary" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {!filterEnd &&
+          filterDataa?.map((item, index) => {
+            return (
+              <div className="cards" key={index}>
+                {loader && (
+                  <img
+                    className="imagecard hvr-grow"
+                    src={item.images.small}
+                  ></img>
+                )}
+                {!loader && (
+                  <div className="spinner-border text-light" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        {filterEnd === false &&
+          data?.data?.map((item, index) => {
+            return (
+              <div ref={myref} className="cards" key={index}>
+                {loader && (
+                  <img
+                    className="imagecard hvr-grow"
+                    src={item.images.small}
+                  ></img>
+                )}
+                {!loader && (
+                  <div className="spinner-border text-light" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
