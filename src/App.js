@@ -5,7 +5,7 @@ import image from '../src/assets/Images/paisaje.gif';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [page, setPage] = useState(1);
 
@@ -16,11 +16,12 @@ function App() {
   const getCards = () => {
     setLoader(false);
     axios(
-      `https://api.pokemontcg.io/v2/cards/?page=${page || 1}&pageSize=10`
+      `https://api.pokemontcg.io/v2/cards/?page=${
+        localStorage.getItem('page') || 1
+      }&pageSize=12`
     ).then((resp) => {
       setData(resp.data);
       setLoader(true);
-      console.log(resp.data);
     });
   };
 
@@ -29,7 +30,7 @@ function App() {
     if (page >= 250) {
       setPage(1);
     }
-    console.log('la page', page);
+    localStorage.setItem('page', page);
     getCards();
   };
 
@@ -38,6 +39,7 @@ function App() {
     if (page <= 1) {
       setPage(1);
     }
+    localStorage.setItem('page', page);
     getCards();
   };
 
