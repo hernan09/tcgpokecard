@@ -2,14 +2,18 @@ import React from 'react';
 import './buttons.css';
 import ArrayPokemonTypes from '../array';
 
+let arrayFilter = { data: [] };
+
 const buttons = ({ flag, setFlag, data, setData }) => {
   const handleClick = (e, poketype) => {
+    arrayFilter.data = [];
     data.data.forEach((element) => {
       if (poketype === element.types[0]) {
-        console.log(element);
+        arrayFilter.data.push(element);
       }
     });
     setFlag(false);
+    setData(arrayFilter);
   };
   return (
     <div>

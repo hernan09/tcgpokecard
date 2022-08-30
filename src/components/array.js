@@ -4,10 +4,6 @@ const ClassPokemon = [
     icon: 'https://www.kindpng.com/picc/m/316-3164678_pokemon-symbol-png-transparent-png.png',
   },
   {
-    pokeType: 'Bug',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Pok%C3%A9mon_Bug_Type_Icon.svg/240px-Pok%C3%A9mon_Bug_Type_Icon.svg.png',
-  },
-  {
     pokeType: 'Lightning',
     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH1elmnoXfefk-78O12__EuJri5RY4G8zh5A&usqp=CAU',
   },
@@ -42,26 +38,6 @@ const ClassPokemon = [
   {
     pokeType: 'Fighting',
     icon: 'https://e7.pngegg.com/pngimages/374/734/png-clipart-pokemon-types-pokemon-trading-card-game-video-symbol-blue-fire-dragon-orange-logo.png',
-  },
-  {
-    pokeType: 'Ice',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvBN1h83YXcTGPoSzRhE_SnFly5n-OX5dKg&usqp=CAU',
-  },
-  {
-    pokeType: 'Ghost',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pok%C3%A9mon_Ghost_Type_Icon.svg/800px-Pok%C3%A9mon_Ghost_Type_Icon.svg.png',
-  },
-  {
-    pokeType: 'Fairy',
-    icon: 'https://logodix.com/logo/565521.jpg',
-  },
-  {
-    pokeType: 'Ground',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS39NTuVG7XbrLOrXa05UKyNCk_PljW_Dra7w&usqp=CAU',
-  },
-  {
-    pokeType: 'Poison',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Pok%C3%A9mon_Poison_Type_Icon.svg/800px-Pok%C3%A9mon_Poison_Type_Icon.svg.png',
   },
 ];
 
