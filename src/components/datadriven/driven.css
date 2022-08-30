@@ -15,8 +15,9 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  background-color: white;
+  background-color: black;
   border-radius: 4px;
+  color: white;
 }
 .content-icon {
   display: flex;

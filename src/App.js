@@ -2,17 +2,22 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Driven from './components/datadriven/driven';
 import image from '../src/assets/Images/paisaje.gif';
+import Buttons from './components/botonera/buttons';
 import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [page, setPage] = useState(1);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     getCards();
   }, [page]);
 
+  const changeFlag = (e) => {
+    setFlag(!flag);
+  };
   const getCards = () => {
     setLoader(false);
     axios(
@@ -67,7 +72,33 @@ function App() {
         </button>
       </div>
       <div className="content_box">
-        {<Driven loader={loader} data={data}></Driven>}
+        <div className="top">
+          <fieldset className="form-group">
+            <div className="content-check">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckChecked"
+                  onChange={changeFlag}
+                />
+                <label
+                  className="form-check-label"
+                  for="flexSwitchCheckChecked"
+                >
+                  Filter for type
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <Buttons
+          flag={flag}
+          setFlag={setFlag}
+          data={data}
+          setData={setData}
+        ></Buttons>
+        {<Driven loader={loader} data={data} setData={setData}></Driven>}
         {/* {loader &&
           data?.data?.map((item, index) => {
             return (
@@ -83,10 +114,10 @@ function App() {
       <div className="footer">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="#">PokeApp made</a>
+            <a href="#">Developed </a>
           </li>
           <li className="breadcrumb-item">
-            <a href="#">be</a>
+            <a href="#"> From by</a>
           </li>
           <li className="breadcrumb-item active">Hernan</li>
         </ol>
